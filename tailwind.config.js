@@ -36,11 +36,20 @@ export default {
             transform: 'scale(0.5)',
             opacity: '0',
           },
-        }
+        },
+        zoomOut:{
+          '0%': {
+            transform: 'scale(1)',
+          },
+          '100%': {
+            transform: 'scale(2)',
+          },
+        },
       },
       animation: {
         zoomIn: 'zoomIn 0.3s ease-in-out forwards', 
         zoomOut: 'zoomOut 0.3s ease-in-out forwards',
+        scaling: 'scaling 0.3s ease-in-out',
       },
     },
   },

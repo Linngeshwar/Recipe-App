@@ -6,7 +6,8 @@ import UnderLine from "./components/UnderLine.jsx";
 import Dishname from "./components/Dishname.jsx";
 import { Input } from "postcss";
 import Getrecipe from "./components/Getrecipe.jsx";
-import Recipe from "./components/recipe.jsx";
+import Recipe from "./components/Recipe.jsx";
+
 
 function Home(){
     return (<>
@@ -15,8 +16,10 @@ function Home(){
                 <Title />
             </div>
             <Recipe/>
-            <Dishname/>
-            <Getrecipe/>
+            <form className="flex flex-col align-middle items-center justify-center w-screen">
+                <Dishname/>
+                <Getrecipe/>
+            </form>
         </div>
     </>)
 }
