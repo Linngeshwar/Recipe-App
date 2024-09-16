@@ -37,7 +37,7 @@ export default {
             opacity: '0',
           },
         },
-        zoomOut:{
+        scaling:{
           '0%': {
             transform: 'scale(1)',
           },
@@ -49,7 +49,7 @@ export default {
       animation: {
         zoomIn: 'zoomIn 0.3s ease-in-out forwards', 
         zoomOut: 'zoomOut 0.3s ease-in-out forwards',
-        scaling: 'scaling 0.3s ease-in-out',
+        scaling: 'scaling 0.3 ease-in-out',
       },
     },
   },

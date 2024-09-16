@@ -1,7 +1,13 @@
 import React from "react";
 
-function Dishname() {
+function Getrecipe() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const dishName = document.getElementById("dishName").value;
+    console.log(dishName);
+  }
   return (
+    <form className="flex flex-col align-middle items-center justify-center w-screen" onSubmit={handleSubmit}>
     <div className="bg-[#5a5a69] flex justify-center w-6/12 rounded-lg p-2">
       <div className="relative w-full m-2">
         <input
@@ -21,7 +27,11 @@ function Dishname() {
         </label>
       </div>
     </div>
+    <div className="">
+            <button type="submit" className="text-3xl text-[#ffffff] m-[3rem] py-2 px-5 bg-[#5a5a69]  rounded-[5px] outline-none hover:cursor-pointer hover:bg-[#5f5f6e] hover:scale-[1.1] active:bg-[#6464c6] transition-all duration-300 ease-in-out">GET RECIPES</button>
+    </div>
+    </form>
   );
 }
 
-export default Dishname;
+export default Getrecipe;
