@@ -4,7 +4,7 @@
   "main": "D:/Web dev/React Js/Recipe/Recipe-App/backend/src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
+    "node-fetch": "^3.3.2",
     "nodemon": "^3.1.7"
   },
   "devDependencies": {
