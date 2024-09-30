@@ -1,7 +1,7 @@
 import React from "react";
 import Title from "../components/Title.jsx";
 import Getrecipe from "../components/Getrecipe.jsx";
-import Recipe from "../components/Recipe.jsx";
+import RecipeAnimation from "../components/RecipeAnimation.jsx";
 import "../styles/Home.css";
 
 function Home(){
@@ -10,7 +10,7 @@ function Home(){
             <div className="w-full pt-10 flex flex-col justify-center items-center">
                 <Title />
             </div>
-            <Recipe/>
+            <RecipeAnimation/>
             <Getrecipe/>
         </div>
     </>)

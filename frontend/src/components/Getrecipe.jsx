@@ -1,13 +1,17 @@
 import React from "react";
 import { getRecipes } from "../util/api";
+import { useNavigate } from "react-router-dom";
 
 function Getrecipe() {
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const dishName = e.target.dishName.value;
       const response = await getRecipes(dishName);
       console.log(response.data);
+      navigate("/recipe", { state: response.data });
     } catch (error) {
       console.error(error);
     }

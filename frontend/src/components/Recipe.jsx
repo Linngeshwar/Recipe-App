@@ -1,99 +1,57 @@
-import React, { useState} from "react";
+import React,{useState} from "react";
 
-const RandomIcon = ({ src, alt, top, left ,opacity,animationClass}) => {
+function recipe(props){
+    const [isOpen, setIsOpen] = useState(false);
+
+    const togglepopup = () => {
+        setIsOpen(!isOpen);
+    };
+    const [checkedIngredients, setCheckedIngredients] = useState([]);
+
+    const handleCheckboxChange = (index) => {
+        setCheckedIngredients((prev) => {
+            if (prev.includes(index)) {
+                return prev.filter((i) => i !== index);
+            } else {
+                return [...prev, index];
+            }
+        });
+    };
+
     return (
-      <img 
-        src={src} 
-        className={`w-12 h-12 absolute transform transition-all duration-300 ease-in-out ${animationClass}`} 
-        style={{ top: `${top}%`, left: `${left}%`, opacity: opacity }}
-        alt={alt}
-      />
-    );
-  };
-  
-
-  function Recipe(){
-    const [iconAnimation, setIconAnimation] = useState({
-        Italian : '',
-        Indian : '',
-        Japanese : ''
-    });
-
-    const icons = [
-        { src: "/assets/Recipe Favicons/Italian/pizza.png", top: 12, left: 10 ,opacity: iconAnimation.Italian === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Italian},
-        { src: "/assets/Recipe Favicons/Italian/farfalle.png", top: 35, left: 2 ,opacity: iconAnimation.Italian === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Italian},
-        { src: "/assets/Recipe Favicons/Italian/gelato.png", top: 60, left: 7 ,opacity: iconAnimation.Italian === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Italian},
-        { src: "/assets/Recipe Favicons/Italian/lasagna.png", top: 12, left: 75 ,opacity: iconAnimation.Italian === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Italian},
-        { src: "/assets/Recipe Favicons/Italian/pasta.png", top: 29, left: 89 ,opacity: iconAnimation.Italian === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Italian},
-        { src: "/assets/Recipe Favicons/Italian/tiramisu.png", top: 61, left: 83 ,opacity: iconAnimation.Italian === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Italian},
-
-        { src: "/assets/Recipe Favicons/Indian/naan.png", top: 15, left: 15 ,opacity: iconAnimation.Indian === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Indian},
-        { src: "/assets/Recipe Favicons/Indian/biryani.png", top: 38, left:4 ,opacity: iconAnimation.Indian === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Indian}, 
-        { src: "/assets/Recipe Favicons/Indian/samosa.png", top: 63, left: 10 ,opacity: iconAnimation.Indian === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Indian},
-        { src: "/assets/Recipe Favicons/Indian/tandoori.png", top: 15, left: 75 ,opacity: iconAnimation.Indian === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Indian},
-        { src: "/assets/Recipe Favicons/Indian/paneer.png", top: 33, left: 85 ,opacity: iconAnimation.Indian === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Indian},
-        { src: "/assets/Recipe Favicons/Indian/dosa.png", top: 63, left: 75 ,opacity: iconAnimation.Indian === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Indian},        
-
-        { src: "/assets/Recipe Favicons/Japanese/ramen.png", top: 10, left: 13 ,opacity: iconAnimation.Japanese === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Japanese},
-        { src: "/assets/Recipe Favicons/Japanese/oden.png", top: 35, left: 6 ,opacity: iconAnimation.Japanese === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Japanese},
-        { src: "/assets/Recipe Favicons/Japanese/onigiri.png", top: 59, left: 8 ,opacity: iconAnimation.Japanese === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Japanese},
-        { src: "/assets/Recipe Favicons/Japanese/tempura.png", top: 11, left: 79 ,opacity: iconAnimation.Japanese === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Japanese},
-        { src: "/assets/Recipe Favicons/Japanese/tonkatsu.png", top: 35, left: 90 ,opacity: iconAnimation.Japanese === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Japanese},
-        { src: "/assets/Recipe Favicons/Japanese/sushi.png", top: 64, left: 79 ,opacity: iconAnimation.Japanese === 'animate-zoomIn' ? 1 : 0,animationClass:iconAnimation.Japanese}
-    ];
-    const handleMouseOver = (cuisine) => {
-        setIconAnimation((prev) => ({
-          ...prev,
-          [cuisine]: 'animate-zoomIn',
-        }));
-      };
-    
-      const handleMouseLeave = (cuisine) => {
-        setIconAnimation((prev) => ({
-          ...prev,
-          [cuisine]: 'animate-zoomOut',
-        }));
-      };
-
-    return(
-        <div className="w-[75vh] mx-20 my-10 relative">
-            {/* Icon container */}
-            <div className="absolute inset-0 -m-20"> {/* Negative margin to extend beyond text area */}
-                {icons.map((icon, index) => (
-                    <RandomIcon 
-                        key={index} 
-                        src={icon.src} 
-                        alt={`Cuisine icon ${index + 1}`} 
-                        top={icon.top} 
-                        left={icon.left} 
-                        opacity={icon.opacity}
-                        animationClass={icon.animationClass}
-                    />
-                ))}
+        <>
+            <div className="flex flex-col bg-[#dfd6d6] p-5 rounded-lg w-[15rem] justify-content items-center animate-zoomIn transition-all duration-500 ease-in-out cursor-pointer hover:bg-[#989191cb]" onClick={togglepopup}>
+                <img className="w-[10rem] h-[10rem] rounded-lg" src={props.url} alt={props.title} />
+                <h1 className="text-s font-bold text-black text-wrap overflow-hidden text-ellipsis" style={{ wordWrap: "break-word" }}>{props.title}</h1>
             </div>
-            
-            {/* Text content */}
-            <div className="relative z-10 bg-opacity-70 p-4 rounded-lg"> {/* Added background for better readability */}
-                <div className="w-full text-[#000000] text-5xl font-semibold">
-                    <p className="inline-block">Want to find </p>
-                    <p className="inline-block text-[#6f6f7b] ml-4 hover:cursor-default hover:text-[#5353bf] transition-colors duration-150 ease-in-out"
-                        onMouseOver={() => handleMouseOver('Italian')}
-                        onMouseLeave={() => handleMouseLeave('Italian')}
-                        >Italian </p>
-                    <p className="inline-block ml-4">, </p>
-                    <p className="inline-block text-[#6f6f7b] hover:cursor-default hover:text-[#5353bf] transition-colors duration-150 ease-in-out"
-                        onMouseOver={() => handleMouseOver('Indian')}
-                        onMouseLeave={() => handleMouseLeave('Indian')}
-                        >Indian </p>
-                    <p className="inline-block ml-4">or </p>
-                    <p className="inline-block text-[#6f6f7b] ml-4 hover:cursor-default hover:text-[#5353bf] transition-colors duration-150 ease-in-out"
-                        onMouseOver={() => handleMouseOver('Japanese')}
-                        onMouseLeave={() => handleMouseLeave('Japanese')}
-                        > Japanese </p>
-                    <p className="inline-block ml-4">or any dish?</p>
+
+            {isOpen && (
+                <div className="fixed top-0 left-0 w-screen h-screen bg-[#000000b8] flex justify-center items-center">
+                    <div className="flex flex-col items-start bg-[#dfd6d6] w-[80%] h-[80%] p-5 rounded-lg relative">
+                        <h2 className="text-2xl text-black cursor-pointer absolute top-4 right-4" onClick={togglepopup}>X</h2>
+                        <div className="mt-[2rem]">
+                        {props.ingredients.map((ingredient, index) => (
+                            <div key={index} className="flex items-center">
+                                <input type="checkbox" className="outline-none active:outline-none hover:cursor-pointer" checked={checkedIngredients.includes(index)} onChange={() => handleCheckboxChange(index)}/>
+                                <p className={`text-md text-black ${checkedIngredients.includes(index) ? 'line-through' : ''}`}>
+                                    {ingredient}
+                                </p>
+                            </div>
+                        ))}
+                        </div>
+                        <div className="mt-[1rem]">
+                        {props.instructions.map((instruction, index) => (
+                            <div key={index} className="flex flex-row items-start">
+                                <p className="text-md text-black font-semibold mr-2">{index + 1}.</p>
+                                <p className="text-md text-black text-left">{instruction}</p>
+                            </div>
+                        ))}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    );
+            )}
+        </>
+    )
 }
-export default Recipe;
+
+export default recipe;
