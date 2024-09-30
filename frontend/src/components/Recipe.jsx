@@ -26,8 +26,8 @@ function recipe(props){
             </div>
 
             {isOpen && (
-                <div className="fixed top-0 left-0 w-screen h-screen bg-[#000000b8] flex justify-center items-center">
-                    <div className="flex flex-col items-start bg-[#dfd6d6] w-[80%] h-[80%] p-5 rounded-lg relative">
+                <div className="fixed top-0 left-0 w-screen h-screen bg-[#000000b8] flex justify-center items-center animate-fadeIn transition-all duration-300 ease-in-out">
+                    <div className="flex flex-col items-start bg-[#dfd6d6] w-[60%] h-[80%] p-5 rounded-lg relative overflow-y-scroll scroll-smooth custom-scrollbar">
                         <h2 className="text-2xl text-black cursor-pointer absolute top-4 right-4" onClick={togglepopup}>X</h2>
                         <div className="mt-[2rem]">
                         {props.ingredients.map((ingredient, index) => (

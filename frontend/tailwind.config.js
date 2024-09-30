@@ -45,11 +45,20 @@ export default {
             transform: 'scale(2)',
           },
         },
+        fadeIn: {
+          '0%': {
+            opacity: '0',
+          },
+          '100%': {
+            opacity: '1',
+          },
+        },
       },
       animation: {
         zoomIn: 'zoomIn 0.3s ease-in-out forwards', 
         zoomOut: 'zoomOut 0.3s ease-in-out forwards',
         scaling: 'scaling 0.3 ease-in-out',
+        fadeIn: 'fadeIn 0.3s ease-in-out forwards',
       },
     },
   },
