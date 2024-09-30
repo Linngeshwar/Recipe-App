@@ -10,7 +10,7 @@ function recipe(props){
 
     const handleCheckboxChange = (index) => {
         setCheckedIngredients((prev) => {
-            if (prev.includes(index)) {
+            if (prev.includes(index)) { 
                 return prev.filter((i) => i !== index);
             } else {
                 return [...prev, index];
@@ -26,7 +26,7 @@ function recipe(props){
             </div>
 
             {isOpen && (
-                <div className="fixed top-0 left-0 w-screen h-screen bg-[#000000b8] flex justify-center items-center animate-fadeIn transition-all duration-300 ease-in-out">
+                <div className="fixed top-0 left-0 w-screen h-screen bg-[#000000b8] flex justify-center items-center animate-fadeIn transition-all duration-300 ease-in-out z-50">
                     <div className="flex flex-col items-start bg-[#dfd6d6] w-[60%] h-[80%] p-5 rounded-lg relative overflow-y-scroll scroll-smooth custom-scrollbar">
                         <h2 className="text-2xl text-black cursor-pointer absolute top-4 right-4" onClick={togglepopup}>X</h2>
                         <div className="mt-[2rem]">
