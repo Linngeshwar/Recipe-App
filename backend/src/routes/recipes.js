@@ -8,7 +8,7 @@ recipeRouter.get("/",async (req, res) => {
   const apiKey = process.env.API_KEY;
   const apiKey2 = process.env.API_KEY2;
   const query = req.query.dishName;
-  const url = `https://api.spoonacular.com/recipes/complexSearch?query=${query}&number=1&apiKey=${apiKey2}`;
+  const url = `https://api.spoonacular.com/recipes/complexSearch?query=${query}&number=10&apiKey=${apiKey2}`;
 try {
   const response = await fetch(url);
     if(response.ok) { 
