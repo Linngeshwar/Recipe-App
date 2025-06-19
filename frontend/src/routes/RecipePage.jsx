@@ -40,12 +40,6 @@ function RecipePage() {
           ))}
         </div>
       </div>
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
     </div>
   );
 }
